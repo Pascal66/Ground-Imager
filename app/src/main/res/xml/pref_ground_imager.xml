@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="@string/preference_sound"
+        android:key="preference_sound">
+        <SeekBarPreference
+            android:key="sample_rate"
+            android:title="Sampling Rate (ms)"
+            android:max="500"
+            android:defaultValue="100"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <SeekBarPreference
+            android:key="treshold"
+            android:title="Treshold (-dB)"
+            android:max="32"
+            android:defaultValue="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/preference_screen"
+        android:key="preference_screen">
+        <SeekBarPreference
+            android:key="coil_position_x"
+            android:title="Coil position X in %"
+            android:max="100"
+            android:defaultValue="50"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <SeekBarPreference
+            android:key="coil_position_y"
+            android:title="Coil position Y in %"
+            android:max="100"
+            android:defaultValue="50"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/preference_object_scan"
+        android:key="preference_object_scan">
+        <SeekBarPreference
+            android:key="max_frequency_dark"
+            android:title="Max frequency Dark"
+            android:max="1000"
+            android:defaultValue="400"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <SeekBarPreference
+            android:key="max_frequency_green"
+            android:title="Max frequency Green"
+            android:max="1000"
+            android:defaultValue="580"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <SeekBarPreference
+            android:key="min_distance_objects"
+            android:title="Distance between objects"
+            android:max="100"
+            android:defaultValue="10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/preference_search_area"
+        android:key="preference_search_area">
+        <SeekBarPreference
+            android:key="min_distance_search"
+            android:title="Distance between search path objects"
+            android:max="100"
+            android:defaultValue="10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

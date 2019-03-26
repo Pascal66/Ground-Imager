@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="net.augmented_reality.groundimager.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <org.rajawali3d.view.SurfaceView
+        android:id="@+id/surfaceview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="top"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/frequency_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:ems="4"
+        android:gravity="right"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:shadowColor="@android:color/black"
+        android:shadowDx="4"
+        android:shadowDy="4"
+        android:shadowRadius="4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/decibel_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="12"
+        android:ems="4"
+        android:gravity="right"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:shadowColor="@android:color/black"
+        android:shadowDx="4"
+        android:shadowDy="4"
+        android:shadowRadius="4"
+        app:layout_constraintBottom_toTopOf="@+id/frequency_value"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/frequency_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="Frequency (Hz)"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:shadowColor="@android:color/black"
+        android:shadowDx="4"
+        android:shadowDy="4"
+        android:shadowRadius="4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/frequency_value" />
+
+    <TextView
+        android:id="@+id/decibel_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="Signal Level (dB)"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:shadowColor="@android:color/black"
+        android:shadowDx="4"
+        android:shadowDy="4"
+        android:shadowRadius="4"
+        app:layout_constraintBottom_toTopOf="@+id/frequency_label"
+        app:layout_constraintLeft_toRightOf="@+id/decibel_value" />
+
+</android.support.constraint.ConstraintLayout>
