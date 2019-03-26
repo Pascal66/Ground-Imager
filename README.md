@@ -1,5 +1,7 @@
 # Ground-Imager
 
+More information under https://www.augmented-reality.net
+
 Proof of concept of marking search areas and imaging metal on the ground with a metal detector and Google Tango - Augmented Reality.
 
 A metal detector can recognise metal objects in the ground when you move the coil of the detector over the ground.
@@ -20,4 +22,4 @@ The Ground Imager App can mark the area where the coil has moved over the ground
 
 In the future this information also can be shared with other users in the same area. So maybe you generate a red transparent overlay and an other team member generates a blue transparent overlay. Both can see the red and blue searched areas.
 
-More information under https://www.augmented-reality.net
+
