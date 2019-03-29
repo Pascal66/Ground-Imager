@@ -1,13 +1,19 @@
 # Ground-Imager
 
+Proof of concept of marking search areas and imaging metal on the ground with a metal detector and Google Tango - Augmented Reality.
+
 More information under https://www.augmented-reality.net
 
-Proof of concept of marking search areas and imaging metal on the ground with a metal detector and Google Tango - Augmented Reality.
+![](https://github.com/Cyrata72/Ground-Imager/blob/master/Hardware1s.jpg?raw=true)
+
+![](https://github.com/Cyrata72/Ground-Imager/blob/master/Hardware2s.jpg?raw=true)
+
 
 A metal detector can recognise metal objects in the ground when you move the coil of the detector over the ground.
 With this measurement one can differentiate between different metals in the ground and produce corresponding acoustic output signals.
 
 The Google Tango technology can track the motion and position of the phone in the real world.
+
 
 
 [![Ground Imager](https://img.youtube.com/vi/I6KrKBhHXR4/0.jpg)](https://www.youtube.com/watch?v=I6KrKBhHXR4)
