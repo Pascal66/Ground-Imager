@@ -11,12 +11,12 @@ import android.opengl.Matrix;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.preference.PreferenceManager;
-import android.support.v7.widget.Toolbar;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
+import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
@@ -296,7 +296,8 @@ public class MainActivity extends AppCompatActivity {
 
         // Check and request camera and record audio permission at run time.
         if (checkAndRequestPermissions()) {
-            bindTangoService();
+
+//            bindTangoService();
         }
     }
 
@@ -583,7 +584,7 @@ public class MainActivity extends AppCompatActivity {
         // Color camera's coordinates has y pointing downwards so we negate this term.
         double yoffset = -(cy - (height / 2.0)) * yscale;
 
-        float m[] = new float[16];
+        float[] m = new float[16];
         Matrix.frustumM(m, 0,
                 (float) (xscale * -width / 2.0 - xoffset),
                 (float) (xscale * width / 2.0 - xoffset),

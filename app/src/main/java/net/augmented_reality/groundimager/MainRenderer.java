@@ -134,7 +134,7 @@ public class MainRenderer extends Renderer {
                     Log.e("*************** ", "**************");
                     Log.e("Object Vector ", vector.toString());
                     Log.e("*************** ", "**************");
-                    Log.e("Frequency ", new Double(mFrequency).toString());
+                    Log.e("Frequency ", Double.valueOf(mFrequency).toString());
                     Log.e("*************** ", "**************");
 
                     if (mLastObjectVector == null) {
@@ -143,7 +143,7 @@ public class MainRenderer extends Renderer {
                     } else {
                         double distance = mLastObjectVector.distanceTo2(vector);
                         Log.e("*************** ", "**************");
-                        Log.e("Object Distance ", new Double(distance).toString());
+                        Log.e("Object Distance ", Double.valueOf(distance).toString());
                         Log.e("*************** ", "**************");
 
                         if (distance > mMinObjectDistance) {
@@ -172,7 +172,7 @@ public class MainRenderer extends Renderer {
                     } else {
                         double distance = mLastSearchVector.distanceTo2(vector);
                         Log.e("*************** ", "**************");
-                        Log.e("Search Distance ", new Double(distance).toString());
+                        Log.e("Search Distance ", Double.valueOf(distance).toString());
                         Log.e("*************** ", "**************");
 
                         if (distance > mMinSearchDistance) {

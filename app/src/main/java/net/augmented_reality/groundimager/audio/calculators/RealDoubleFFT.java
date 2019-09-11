@@ -7,7 +7,7 @@ package net.augmented_reality.groundimager.audio.calculators;
 public class RealDoubleFFT {
 
     public double norm_factor;
-    private double wavetable[];
+	private double[] wavetable;
     private double[] ch;    // reusable work array
     private int ndim;
 
@@ -21,7 +21,7 @@ public class RealDoubleFFT {
         ch = new double[n];
     }
 
-    public void ft(double x[]) {
+    public void ft(double[] x) {
         if (x.length != ndim)
             throw new IllegalArgumentException("The length of data can not match that of the wavetable");
         rfftf(ndim, x, wavetable, ch);
@@ -33,8 +33,8 @@ public class RealDoubleFFT {
 
     static final int[] ntryh = new int[]{4, 2, 3, 5};
 
-    void radf2(int ido, int l1, final double cc[], double ch[],
-               final double wtable[], int offset) {
+    void radf2(int ido, int l1, final double[] cc, double[] ch,
+			   final double[] wtable, int offset) {
         int i, k, ic;
         double ti2, tr2;
         int iw1;
@@ -65,8 +65,8 @@ public class RealDoubleFFT {
         }
     }
 
-    void radf3(int ido, int l1, final double cc[], double ch[],
-               final double wtable[], int offset) {
+    void radf3(int ido, int l1, final double[] cc, double[] ch,
+			   final double[] wtable, int offset) {
         final double taur = -0.5D;
         final double taui = 0.866025403784439D;
         int i, k, ic;
@@ -105,7 +105,7 @@ public class RealDoubleFFT {
         }
     }
 
-    void radf4(int ido, int l1, final double cc[], double ch[], final double wtable[], int offset) {
+    void radf4(int ido, int l1, final double[] cc, double[] ch, final double[] wtable, int offset) {
         final double hsqt2 = 0.7071067811865475D;
         int i, k, ic;
         double ci2, ci3, ci4, cr2, cr3, cr4, ti1, ti2, ti3, ti4, tr1, tr2, tr3, tr4;
@@ -162,7 +162,7 @@ public class RealDoubleFFT {
         }
     }
 
-    void radf5(int ido, int l1, final double cc[], double ch[], final double wtable[], int offset) {
+    void radf5(int ido, int l1, final double[] cc, double[] ch, final double[] wtable, int offset) {
         final double tr11 = 0.309016994374947D;
         final double ti11 = 0.951056516295154D;
         final double tr12 = -0.809016994374947D;
@@ -228,7 +228,7 @@ public class RealDoubleFFT {
         }
     }
 
-    void radfg(int ido, int ip, int l1, int idl1, double cc[], double c1[], double c2[], double ch[], double ch2[], final double wtable[], int offset) {
+    void radfg(int ido, int ip, int l1, int idl1, double[] cc, double[] c1, double[] c2, double[] ch, double[] ch2, final double[] wtable, int offset) {
         final double twopi = 2.0D * Math.PI; //6.28318530717959;
         int idij, ipph, i, j, k, l, j2, ic, jc, lc, ik, is, nbd;
         double dc2, ai1, ai2, ar1, ar2, ds2, dcp, arg, dsp, ar1h, ar2h;
@@ -399,7 +399,7 @@ public class RealDoubleFFT {
         }
     }
 
-    void rfftf1(int n, double c[], final double wtable[], int offset, double[] ch) {
+    void rfftf1(int n, double[] c, final double[] wtable, int offset, double[] ch) {
         int i;
         int k1, l1, l2, na, kh, nf, ip, iw, ido, idl1;
 
@@ -457,12 +457,12 @@ public class RealDoubleFFT {
         for (i = 0; i < n; i++) c[i] = ch[i];
     }
 
-    void rfftf(int n, double r[], double wtable[], double[] ch) {
+    void rfftf(int n, double[] r, double[] wtable, double[] ch) {
         if (n == 1) return;
         rfftf1(n, r, wtable, 0, ch);
     }
 
-    void rffti1(int n, double wtable[], int offset) {
+    void rffti1(int n, double[] wtable, int offset) {
 
         final double twopi = 2.0D * Math.PI;
         double argh;
@@ -536,7 +536,7 @@ public class RealDoubleFFT {
         }
     }
 
-    void rffti(int n, double wtable[]) {
+    void rffti(int n, double[] wtable) {
         if (n == 1) return;
         rffti1(n, wtable, 0);
     }

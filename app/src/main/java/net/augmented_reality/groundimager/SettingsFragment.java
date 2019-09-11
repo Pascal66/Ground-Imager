@@ -2,7 +2,7 @@ package net.augmented_reality.groundimager;
 
 
 import android.os.Bundle;
-import android.support.v7.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceFragmentCompat;
 
 /**
  * Created by noethen on 21.07.17.
