@@ -34,9 +34,7 @@ public class FrequencyCalculator {
         spectrumAmpFFT = new RealDoubleFFT(fftlen);
         spectrumAmpOutArray = new double[(int) Math.ceil((double) 1 / fftlen)][];
 
-        for (int i = 0; i < spectrumAmpOutArray.length; i++) {
-            spectrumAmpOutArray[i] = new double[fftlen];
-        }
+        Arrays.fill(spectrumAmpOutArray, new double[fftlen]);
         wnd = new double[fftlen];
         for (int i = 0; i < wnd.length; i++) {
             wnd[i] = Math.asin(Math.sin(Math.PI * i / wnd.length)) / Math.PI * 2;
