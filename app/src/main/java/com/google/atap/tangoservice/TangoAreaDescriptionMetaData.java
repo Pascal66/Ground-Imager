@@ -1,10 +1,9 @@
-package com.test.atap.tangoservice;
+package com.google.atap.tangoservice;
 
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.Iterator;
 import java.util.Set;
 
 public class TangoAreaDescriptionMetaData implements Parcelable {
@@ -64,10 +63,8 @@ public class TangoAreaDescriptionMetaData implements Parcelable {
 	public void writeToParcel(Parcel dest, int flags) {
 		Set<String> keys = this.data.keySet();
 		dest.writeInt(keys.size());
-		Iterator var4 = keys.iterator();
 
-		while(var4.hasNext()) {
-			String key = (String)var4.next();
+		for (String key : keys) {
 			dest.writeString(key);
 			byte[] value = this.data.getByteArray(key);
 			dest.writeByteArray(value);

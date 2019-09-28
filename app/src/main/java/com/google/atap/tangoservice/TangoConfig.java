@@ -1,4 +1,4 @@
-package com.test.atap.tangoservice;
+package com.google.atap.tangoservice;
 
 import android.os.Bundle;
 import android.os.Parcel;
@@ -131,16 +131,22 @@ public class TangoConfig implements Parcelable {
 			String valueType = in.readString();
 			String desc = in.readString();
 			String value = in.readString();
-			if (valueType.equals("bool")) {
-				this.putBoolean(key, value.equalsIgnoreCase("true"));
-			} else if (valueType.equals("int32")) {
-				this.putInt(key, Integer.parseInt(value));
-			} else if (valueType.equals("uint64")) {
-				this.putLong(key, Long.parseLong(value));
-			} else if (valueType.equals("double")) {
-				this.putDouble(key, Double.parseDouble(value));
-			} else if (valueType.equals("string")) {
-				this.putString(key, value);
+			switch (valueType) {
+				case "bool":
+					this.putBoolean(key, value.equalsIgnoreCase("true"));
+					break;
+				case "int32":
+					this.putInt(key, Integer.parseInt(value));
+					break;
+				case "uint64":
+					this.putLong(key, Long.parseLong(value));
+					break;
+				case "double":
+					this.putDouble(key, Double.parseDouble(value));
+					break;
+				case "string":
+					this.putString(key, value);
+					break;
 			}
 		}
 
@@ -155,16 +161,22 @@ public class TangoConfig implements Parcelable {
 			dest.writeString(valueType);
 			dest.writeString("desc");
 			valueString = "";
-			if (valueType.equals("bool")) {
-				valueString = valueString + this.getBoolean(key);
-			} else if (valueType.equals("int32")) {
-				valueString = valueString + this.getInt(key);
-			} else if (valueType.equals("uint64")) {
-				valueString = valueString + this.getLong(key);
-			} else if (valueType.equals("double")) {
-				valueString = valueString + this.getDouble(key);
-			} else if (valueType.equals("string")) {
-				valueString = valueString + this.getString(key);
+			switch (valueType) {
+				case "bool":
+					valueString = valueString + this.getBoolean(key);
+					break;
+				case "int32":
+					valueString = valueString + this.getInt(key);
+					break;
+				case "uint64":
+					valueString = valueString + this.getLong(key);
+					break;
+				case "double":
+					valueString = valueString + this.getDouble(key);
+					break;
+				case "string":
+					valueString = valueString + this.getString(key);
+					break;
 			}
 		}
 

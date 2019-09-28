@@ -1,4 +1,4 @@
-package com.test.atap.tangoservice;
+package com.google.atap.tangoservice;
 
 public class TangoFoiResult {
 	public String id;

@@ -1,17 +1,17 @@
-package com.test.tango;
+package com.google.tango;
 
 import android.content.Context;
 import android.os.IBinder;
 import android.util.Log;
 
-import com.test.atap.tangoservice.experimental.TangoTransformation;
-import com.test.atap.tangoservice.experimental.TangoImageBuffer;
-import com.test.atap.tangoservice.TangoAreaDescriptionMetaData;
-import com.test.atap.tangoservice.TangoCameraIntrinsics;
-import com.test.atap.tangoservice.TangoConfig;
-import com.test.atap.tangoservice.TangoEvent;
-import com.test.atap.tangoservice.TangoPointCloudData;
-import com.test.atap.tangoservice.TangoPoseData;
+import com.google.atap.tangoservice.experimental.TangoTransformation;
+import com.google.atap.tangoservice.experimental.TangoImageBuffer;
+import com.google.atap.tangoservice.TangoAreaDescriptionMetaData;
+import com.google.atap.tangoservice.TangoCameraIntrinsics;
+import com.google.atap.tangoservice.TangoConfig;
+import com.google.atap.tangoservice.TangoEvent;
+import com.google.atap.tangoservice.TangoPointCloudData;
+import com.google.atap.tangoservice.TangoPoseData;
 
 //import com.google.atap.tangoservice.TangoAreaDescriptionMetaData;
 //import com.google.atap.tangoservice.experimental.TangoTransformation;
@@ -23,15 +23,15 @@ public class TangoJNINative {
 
 	public static native int Initialize(Context var0);
 
-	public static native void GetConfig(int var0, com.test.atap.tangoservice.TangoConfig var1);
+	public static native void GetConfig(int var0, com.google.atap.tangoservice.TangoConfig var1);
 
-	public static native int Connect(com.test.atap.tangoservice.TangoConfig var0);
+	public static native int Connect(com.google.atap.tangoservice.TangoConfig var0);
 
-	public static native int ConnectListener(int[] var0, Tango.TangoUpdateCallback var1, com.test.atap.tangoservice.TangoPoseData var2, TangoPointCloudData var3, TangoEvent var4);
+	public static native int ConnectListener(int[] var0, Tango.TangoUpdateCallback var1, com.google.atap.tangoservice.TangoPoseData var2, TangoPointCloudData var3, TangoEvent var4);
 
 	public static native void Disconnect();
 
-	public static native int GetPoseAtTime(double var0, int var2, int var3, com.test.atap.tangoservice.TangoPoseData var4);
+	public static native int GetPoseAtTime(double var0, int var2, int var3, com.google.atap.tangoservice.TangoPoseData var4);
 
 	public static native int GetPoseAtTime2(double var0, String var2, String var3, TangoPoseData var4);
 
@@ -43,7 +43,7 @@ public class TangoJNINative {
 
 	public static native void ResetMotionTracking();
 
-	public static native int GetAreaDescriptionMetadata(String var0, com.test.atap.tangoservice.TangoAreaDescriptionMetaData var1);
+	public static native int GetAreaDescriptionMetadata(String var0, com.google.atap.tangoservice.TangoAreaDescriptionMetaData var1);
 
 	public static native int SaveAreaDescription(String[] var0);
 

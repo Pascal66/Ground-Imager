@@ -1,4 +1,4 @@
-package com.test.atap.tangoservice;
+package com.google.atap.tangoservice;
 
 import android.os.Parcel;
 import android.os.ParcelFileDescriptor;

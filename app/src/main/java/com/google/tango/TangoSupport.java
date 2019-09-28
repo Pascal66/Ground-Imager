@@ -1,9 +1,9 @@
-package com.test.tango;
+package com.google.tango;
 
-import com.test.atap.tangoservice.TangoCameraIntrinsics;
-import com.test.atap.tangoservice.TangoPoseData;
-import com.test.atap.tangoservice.experimental.TangoImageBuffer;
-import com.test.atap.tangoservice.TangoPointCloudData;
+import com.google.atap.tangoservice.TangoCameraIntrinsics;
+import com.google.atap.tangoservice.TangoPoseData;
+import com.google.atap.tangoservice.experimental.TangoImageBuffer;
+import com.google.atap.tangoservice.TangoPointCloudData;
 
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
@@ -50,7 +50,7 @@ public class TangoSupport {
 		Tango.throwTangoExceptionIfNeeded(TangoSupportJNIInterface.initializeWithCallbacks(callbacks));
 	}
 
-	public static TangoSupport.IntersectionPointPlaneModelPair fitPlaneModelNearPoint(com.test.atap.tangoservice.TangoPointCloudData pointCloud, double[] pointCloudTranslation, double[] pointCloudOrientation, float u, float v, int displayRotation, double[] colorCameraTranslation, double[] colorCameraOrientation) throws TangoErrorException, TangoInvalidException {
+	public static TangoSupport.IntersectionPointPlaneModelPair fitPlaneModelNearPoint(com.google.atap.tangoservice.TangoPointCloudData pointCloud, double[] pointCloudTranslation, double[] pointCloudOrientation, float u, float v, int displayRotation, double[] colorCameraTranslation, double[] colorCameraOrientation) throws TangoErrorException, TangoInvalidException {
 		double[] intersectionPoint = new double[3];
 		double[] planeModel = new double[4];
 		Tango.throwTangoExceptionIfNeeded(TangoSupportJNIInterface.fitPlaneModelNearPoint(pointCloud, pointCloudTranslation, pointCloudOrientation, u, v, displayRotation, colorCameraTranslation, colorCameraOrientation, intersectionPoint, planeModel));
@@ -77,7 +77,7 @@ public class TangoSupport {
 		}
 	}
 
-	public static float[] getDepthAtPointNearestNeighbor(com.test.atap.tangoservice.TangoPointCloudData pointCloud, double[] pointCloudTranslation, double[] pointCloudOrientation, float u, float v, int displayRotation, double[] colorCameraTranslation, double[] colorCameraOrientation) throws TangoInvalidException {
+	public static float[] getDepthAtPointNearestNeighbor(com.google.atap.tangoservice.TangoPointCloudData pointCloud, double[] pointCloudTranslation, double[] pointCloudOrientation, float u, float v, int displayRotation, double[] colorCameraTranslation, double[] colorCameraOrientation) throws TangoInvalidException {
 		float[] colorCameraPoint = new float[3];
 		int result = TangoSupportJNIInterface.getDepthAtPointNearestNeighbor(pointCloud, pointCloudTranslation, pointCloudOrientation, u, v, displayRotation, colorCameraTranslation, colorCameraOrientation, colorCameraPoint);
 		if (result == -1) {
@@ -91,7 +91,7 @@ public class TangoSupport {
 		}
 	}
 
-	public static float[] getDepthAtPointBilateral(com.test.atap.tangoservice.TangoPointCloudData pointCloud, double[] pointCloudTranslation, double[] pointCloudOrientation, TangoImageBuffer imageBuffer, float u, float v, int displayRotation, double[] colorCameraTranslation, double[] colorCameraOrientation) throws TangoInvalidException {
+	public static float[] getDepthAtPointBilateral(com.google.atap.tangoservice.TangoPointCloudData pointCloud, double[] pointCloudTranslation, double[] pointCloudOrientation, TangoImageBuffer imageBuffer, float u, float v, int displayRotation, double[] colorCameraTranslation, double[] colorCameraOrientation) throws TangoInvalidException {
 		float[] colorCameraPoint = new float[3];
 		int result = TangoSupportJNIInterface.getDepthAtPointBilateral(pointCloud, pointCloudTranslation, pointCloudOrientation, imageBuffer, u, v, displayRotation, colorCameraTranslation, colorCameraOrientation, colorCameraPoint);
 		if (result == -1) {
@@ -111,7 +111,7 @@ public class TangoSupport {
 		return srcTdest;
 	}
 
-	public static TangoSupport.DepthBuffer upsampleImageNearestNeighbor(com.test.atap.tangoservice.TangoPointCloudData pointCloud, int imageWidth, int imageHeight, TangoPoseData colorCameraTPointCloud) throws TangoInvalidException {
+	public static TangoSupport.DepthBuffer upsampleImageNearestNeighbor(com.google.atap.tangoservice.TangoPointCloudData pointCloud, int imageWidth, int imageHeight, TangoPoseData colorCameraTPointCloud) throws TangoInvalidException {
 		ByteDepthBuffer byteDepthBuffer = new ByteDepthBuffer();
 		Tango.throwTangoExceptionIfNeeded(TangoSupportJNIInterface.upsampleImageNearestNeighbor(pointCloud, imageWidth, imageHeight, colorCameraTPointCloud, byteDepthBuffer));
 		TangoSupport.DepthBuffer depthBuffer = new TangoSupport.DepthBuffer();
@@ -121,7 +121,7 @@ public class TangoSupport {
 		return depthBuffer;
 	}
 
-	public static TangoSupport.DepthBuffer upsampleImageBilateral(boolean approximate, com.test.atap.tangoservice.TangoPointCloudData pointCloud, TangoImageBuffer imageBuffer, TangoPoseData colorCameraTPointCloud) throws TangoInvalidException {
+	public static TangoSupport.DepthBuffer upsampleImageBilateral(boolean approximate, com.google.atap.tangoservice.TangoPointCloudData pointCloud, TangoImageBuffer imageBuffer, TangoPoseData colorCameraTPointCloud) throws TangoInvalidException {
 		ByteDepthBuffer byteDepthBuffer = new ByteDepthBuffer();
 		Tango.throwTangoExceptionIfNeeded(TangoSupportJNIInterface.upsampleImageBilateral(approximate, pointCloud, imageBuffer, colorCameraTPointCloud, byteDepthBuffer));
 		TangoSupport.DepthBuffer depthBuffer = new TangoSupport.DepthBuffer();
@@ -153,8 +153,8 @@ public class TangoSupport {
 		Tango.throwTangoExceptionIfNeeded(TangoSupportJNIInterface.transformPose(matrixTransform, inTranslation, inOrientation, outTranslation, outOrientation));
 	}
 
-	public static com.test.atap.tangoservice.TangoPointCloudData transformPointCloud(float[] matrixTransform, com.test.atap.tangoservice.TangoPointCloudData inputCloud) throws TangoInvalidException {
-		com.test.atap.tangoservice.TangoPointCloudData outputCloud = new com.test.atap.tangoservice.TangoPointCloudData();
+	public static com.google.atap.tangoservice.TangoPointCloudData transformPointCloud(float[] matrixTransform, com.google.atap.tangoservice.TangoPointCloudData inputCloud) throws TangoInvalidException {
+		com.google.atap.tangoservice.TangoPointCloudData outputCloud = new com.google.atap.tangoservice.TangoPointCloudData();
 		Tango.throwTangoExceptionIfNeeded(TangoSupportJNIInterface.transformPointCloud(matrixTransform, inputCloud, outputCloud));
 		return outputCloud;
 	}
@@ -169,8 +169,8 @@ public class TangoSupport {
 		Tango.throwTangoExceptionIfNeeded(TangoSupportJNIInterface.doubleTransformPose(matrixTransform, inTranslation, inOrientation, outTranslation, outOrientation));
 	}
 
-	public static com.test.atap.tangoservice.TangoPointCloudData doubleTransformPointCloud(double[] matrixTransform, com.test.atap.tangoservice.TangoPointCloudData inputCloud) throws TangoInvalidException {
-		com.test.atap.tangoservice.TangoPointCloudData outputCloud = new TangoPointCloudData();
+	public static com.google.atap.tangoservice.TangoPointCloudData doubleTransformPointCloud(double[] matrixTransform, com.google.atap.tangoservice.TangoPointCloudData inputCloud) throws TangoInvalidException {
+		com.google.atap.tangoservice.TangoPointCloudData outputCloud = new TangoPointCloudData();
 		Tango.throwTangoExceptionIfNeeded(TangoSupportJNIInterface.doubleTransformPointCloud(matrixTransform, inputCloud, outputCloud));
 		return outputCloud;
 	}

@@ -1,4 +1,4 @@
-package com.test.atap.tangoservice.experimental;
+package com.google.atap.tangoservice.experimental;
 
 import android.os.Parcel;
 import android.os.Parcelable;

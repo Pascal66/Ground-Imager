@@ -1,4 +1,4 @@
-package com.test.tango;
+package com.google.tango;
 
 import android.util.Log;
 

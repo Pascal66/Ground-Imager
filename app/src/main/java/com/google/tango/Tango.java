@@ -1,4 +1,4 @@
-package com.test.tango;
+package com.google.tango;
 
 import android.app.Activity;
 import android.content.ComponentName;
@@ -20,17 +20,17 @@ import android.util.Log;
 //import com.google.atap.tangoservice.ITango;
 //import com.google.atap.tangoservice.ITangoListener;
 
-import com.test.atap.tangoservice.TangoAreaDescriptionMetaData;
-import com.test.atap.tangoservice.TangoFoiResult;
-import com.test.atap.tangoservice.experimental.TangoTransformation;
-import com.test.atap.tangoservice.experimental.TangoImageBuffer;
-import com.test.atap.tangoservice.ITango;
-import com.test.atap.tangoservice.ITangoListener;
-import com.test.atap.tangoservice.TangoCameraIntrinsics;
-import com.test.atap.tangoservice.TangoConfig;
-import com.test.atap.tangoservice.TangoEvent;
-import com.test.atap.tangoservice.TangoPointCloudData;
-import com.test.atap.tangoservice.TangoPoseData;
+import com.google.atap.tangoservice.TangoAreaDescriptionMetaData;
+import com.google.atap.tangoservice.TangoFoiResult;
+import com.google.atap.tangoservice.experimental.TangoTransformation;
+import com.google.atap.tangoservice.experimental.TangoImageBuffer;
+import com.google.atap.tangoservice.ITango;
+import com.google.atap.tangoservice.ITangoListener;
+import com.google.atap.tangoservice.TangoCameraIntrinsics;
+import com.google.atap.tangoservice.TangoConfig;
+import com.google.atap.tangoservice.TangoEvent;
+import com.google.atap.tangoservice.TangoPointCloudData;
+import com.google.atap.tangoservice.TangoPoseData;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -66,7 +66,7 @@ public class Tango {
 	private ServiceConnection mServiceConnection;
 	private volatile boolean mTangoShouldBeDisconnected;
 	private ITango mITango;
-	private com.test.atap.tangoservice.ITangoListener mITangoListener;
+	private com.google.atap.tangoservice.ITangoListener mITangoListener;
 	private Tango.TangoUpdateCallback mCallback;
 	private volatile boolean mTangoServiceConnected;
 	public static final String COORDINATE_FRAME_ID_NONE = "10000000-0000-0000-0000-0000000000ff";
@@ -87,7 +87,7 @@ public class Tango {
 			}
 
 			@Override
-			public void onPoseAvailable(com.test.atap.tangoservice.TangoPoseData pose) {
+			public void onPoseAvailable(com.google.atap.tangoservice.TangoPoseData pose) {
 				if (Tango.this.mCallback != null) {
 					Tango.this.mCallback.onPoseAvailable(pose);
 				}
@@ -98,7 +98,7 @@ public class Tango {
 			}
 
 			@Override
-			public void onTangoEvent(com.test.atap.tangoservice.TangoEvent event) {
+			public void onTangoEvent(com.google.atap.tangoservice.TangoEvent event) {
 				if (Tango.this.mCallback != null) {
 					Tango.this.mCallback.onTangoEvent(event);
 				}
@@ -112,7 +112,7 @@ public class Tango {
 			}
 
 			@Override
-			public void onPointCloudAvailable(com.test.atap.tangoservice.TangoPointCloudData pointCloud) {
+			public void onPointCloudAvailable(com.google.atap.tangoservice.TangoPointCloudData pointCloud) {
 				if (Tango.this.mCallback != null) {
 					Tango.this.mCallback.onPointCloudAvailable(pointCloud);
 				}
@@ -164,8 +164,8 @@ public class Tango {
 		}
 	}
 
-	public com.test.atap.tangoservice.TangoConfig getConfig(int configType) {
-		com.test.atap.tangoservice.TangoConfig config = new com.test.atap.tangoservice.TangoConfig();
+	public com.google.atap.tangoservice.TangoConfig getConfig(int configType) {
+		com.google.atap.tangoservice.TangoConfig config = new com.google.atap.tangoservice.TangoConfig();
 		TangoJNINative.GetConfig(configType, config);
 		return config;
 	}
@@ -220,14 +220,14 @@ public class Tango {
 		}
 
 		if (listener != null) {
-			throwTangoExceptionIfNeeded(TangoJNINative.ConnectListener(coordinateFramePairsArray, listener, new com.test.atap.tangoservice.TangoPoseData(), new com.test.atap.tangoservice.TangoPointCloudData(), new com.test.atap.tangoservice.TangoEvent()));
+			throwTangoExceptionIfNeeded(TangoJNINative.ConnectListener(coordinateFramePairsArray, listener, new com.google.atap.tangoservice.TangoPoseData(), new com.google.atap.tangoservice.TangoPointCloudData(), new com.google.atap.tangoservice.TangoEvent()));
 		} else {
-			throwTangoExceptionIfNeeded(TangoJNINative.ConnectListener(coordinateFramePairsArray, listener, (com.test.atap.tangoservice.TangoPoseData)null, (com.test.atap.tangoservice.TangoPointCloudData)null, (com.test.atap.tangoservice.TangoEvent)null));
+			throwTangoExceptionIfNeeded(TangoJNINative.ConnectListener(coordinateFramePairsArray, listener, (com.google.atap.tangoservice.TangoPoseData)null, (com.google.atap.tangoservice.TangoPointCloudData)null, (com.google.atap.tangoservice.TangoEvent)null));
 		}
 
 	}
 
-	public void connect(com.test.atap.tangoservice.TangoConfig config) {
+	public void connect(com.google.atap.tangoservice.TangoConfig config) {
 		String adfUuid = config.getString("config_load_area_description_UUID");
 		if (adfUuid != null && adfUuid.equals("use_cloud")) {
 			Log.e("Tango", "The 'use_cloud' ADF string is deprecated. This is now enabled via the TangoConfig parameter 'config_experimental_use_cloud_adf'.");
@@ -262,14 +262,14 @@ public class Tango {
 
 	}
 
-	public com.test.atap.tangoservice.TangoPoseData getPoseAtTime(double timestamp, TangoCoordinateFramePair framePair) {
-		com.test.atap.tangoservice.TangoPoseData result = new com.test.atap.tangoservice.TangoPoseData();
+	public com.google.atap.tangoservice.TangoPoseData getPoseAtTime(double timestamp, TangoCoordinateFramePair framePair) {
+		com.google.atap.tangoservice.TangoPoseData result = new com.google.atap.tangoservice.TangoPoseData();
 		throwTangoExceptionIfNeeded(TangoJNINative.GetPoseAtTime(timestamp, framePair.baseFrame, framePair.targetFrame, result));
 		return result;
 	}
 
-	public com.test.atap.tangoservice.TangoPoseData getPoseAtTime(double timestamp, String baseFrameUuid, String targetFrameUuid) {
-		com.test.atap.tangoservice.TangoPoseData result = new com.test.atap.tangoservice.TangoPoseData();
+	public com.google.atap.tangoservice.TangoPoseData getPoseAtTime(double timestamp, String baseFrameUuid, String targetFrameUuid) {
+		com.google.atap.tangoservice.TangoPoseData result = new com.google.atap.tangoservice.TangoPoseData();
 		throwTangoExceptionIfNeeded(TangoJNINative.GetPoseAtTime2(timestamp, baseFrameUuid, targetFrameUuid, result));
 		return result;
 	}
@@ -403,8 +403,8 @@ public class Tango {
 		}
 
 		if (ids != null) {
-			for(int i = 0; i < ids.length; ++i) {
-				if (ids[i] == null) {
+			for (String id : ids) {
+				if (id == null) {
 					throwTangoExceptionIfNeeded(-2);
 				}
 			}
@@ -422,8 +422,8 @@ public class Tango {
 		}
 
 		if (ids != null) {
-			for(int i = 0; i < ids.length; ++i) {
-				if (ids[i] == null) {
+			for (String id : ids) {
+				if (id == null) {
 					throwTangoExceptionIfNeeded(-2);
 				}
 			}
@@ -435,8 +435,8 @@ public class Tango {
 
 	}
 
-	public com.test.atap.tangoservice.TangoCameraIntrinsics getCameraIntrinsics(int cameraId) {
-		com.test.atap.tangoservice.TangoCameraIntrinsics intrinsics = new TangoCameraIntrinsics();
+	public com.google.atap.tangoservice.TangoCameraIntrinsics getCameraIntrinsics(int cameraId) {
+		com.google.atap.tangoservice.TangoCameraIntrinsics intrinsics = new TangoCameraIntrinsics();
 		throwTangoExceptionIfNeeded(TangoJNINative.GetCameraIntrinsics(cameraId, intrinsics));
 		return intrinsics;
 	}

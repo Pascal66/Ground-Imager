@@ -1,6 +1,6 @@
-package com.test.tango;
+package com.google.tango;
 
-import com.test.atap.tangoservice.TangoPointCloudData;
+import com.google.atap.tangoservice.TangoPointCloudData;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -8,20 +8,20 @@ import java.nio.ByteOrder;
 public class TangoPointCloudManager {
 	private static final int SIZE_OF_FLOAT = 4;
 	private static final String TAG = TangoPointCloudManager.class.getSimpleName();
-	private com.test.atap.tangoservice.TangoPointCloudData mBackPointCloud = new com.test.atap.tangoservice.TangoPointCloudData();
-	private com.test.atap.tangoservice.TangoPointCloudData mFrontPointCloud = new com.test.atap.tangoservice.TangoPointCloudData();
-	private com.test.atap.tangoservice.TangoPointCloudData mSharePointCloud = new com.test.atap.tangoservice.TangoPointCloudData();
+	private com.google.atap.tangoservice.TangoPointCloudData mBackPointCloud = new com.google.atap.tangoservice.TangoPointCloudData();
+	private com.google.atap.tangoservice.TangoPointCloudData mFrontPointCloud = new com.google.atap.tangoservice.TangoPointCloudData();
+	private com.google.atap.tangoservice.TangoPointCloudData mSharePointCloud = new com.google.atap.tangoservice.TangoPointCloudData();
 
 	public TangoPointCloudManager() {
 	}
 
-	public com.test.atap.tangoservice.TangoPointCloudData getLatestPointCloud() {
+	public com.google.atap.tangoservice.TangoPointCloudData getLatestPointCloud() {
 		if (this.mFrontPointCloud.points == null && this.mSharePointCloud.points == null) {
 			return null;
 		} else {
 			synchronized(this) {
 				if (this.mSharePointCloud.timestamp > this.mFrontPointCloud.timestamp) {
-					com.test.atap.tangoservice.TangoPointCloudData tempPointCloud = this.mFrontPointCloud;
+					com.google.atap.tangoservice.TangoPointCloudData tempPointCloud = this.mFrontPointCloud;
 					this.mFrontPointCloud = this.mSharePointCloud;
 					this.mSharePointCloud = tempPointCloud;
 				}
@@ -31,7 +31,7 @@ public class TangoPointCloudManager {
 		}
 	}
 
-	public void updatePointCloud(com.test.atap.tangoservice.TangoPointCloudData pointCloud) throws TangoInvalidException {
+	public void updatePointCloud(com.google.atap.tangoservice.TangoPointCloudData pointCloud) throws TangoInvalidException {
 		if (pointCloud == null || Double.isNaN(pointCloud.timestamp) || pointCloud.timestamp < 0.0D || pointCloud.numPoints < 0 || pointCloud.numPoints > 0 && pointCloud.points == null) {
 			throw new TangoInvalidException();
 		} else {
